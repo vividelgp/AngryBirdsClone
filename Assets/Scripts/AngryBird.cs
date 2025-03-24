@@ -8,6 +8,7 @@ public class AngryBird : MonoBehaviour
     private CircleCollider2D _circleCollider;
 
     private bool _hasBeenLanched;
+    private bool _shouldFaceVelDirection;
 
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class AngryBird : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_hasBeenLanched)
+        if (_hasBeenLanched && _shouldFaceVelDirection)
         {
             transform.right = _rb.velocity;
         }
@@ -35,5 +36,11 @@ public class AngryBird : MonoBehaviour
         _rb.AddForce(direction *  force, ForceMode2D.Impulse);
 
         _hasBeenLanched = true;
+        _shouldFaceVelDirection = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _shouldFaceVelDirection = false;
     }
 }
