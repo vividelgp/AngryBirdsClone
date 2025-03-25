@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class SlingShotHandeler : MonoBehaviour
+public class SlingShotHandler : MonoBehaviour
 {
     [Header("Line Renderers")]
     [SerializeField] private LineRenderer _leftLineRenderer;
